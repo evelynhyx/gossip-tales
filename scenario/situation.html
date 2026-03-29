@@ -13,8 +13,25 @@
     <body>
         <div class="container">
             <h1>Situation</h1>
-            <p>Yesterday, ...</p>
+            <p>School was horrible. Everyone was looking at you.<br>
+                You avoided eye contact, but you could still feel the other kids' judgemental stares.<br>
+                As you walked down a hallway, your sharp ears caught a group of girls' whispers:</p>
+            <p id="rumor"></p>
+            <p>The girls giggled as you sped past to your first period class. You could feel heat flush your cheeks.</p>
+            <p>You were embarrassed—but also furious. This wasn't true and you knew it.<br>
+                You had to do something about this, so you began to find potential suspects.</p>
             <button class="button" onclick="location.href='suspects.html'">Next</button>
         </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const name = localStorage.getItem("name");
+
+                if (name) {
+                    document.getElementById("rumor").textContent =
+                        `"I heard that ${name} sleeps with teddy bears."`;
+                }
+            });
+        </script>
     </body>
 </html>

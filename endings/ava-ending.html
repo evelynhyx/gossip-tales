@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ava's Ending</title>
+        <link rel="stylesheet" href="../styles/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Ava Did Not Spread the Rumor</h1>
+            <p id="ava"></p>
+            <p>"I know you're upset right now so as your best friend of 5 years, I'll forgive you. Plus, you deserve to know who really spread the rumor."</p>
+            <p>"It was actually James, your boyfriend. I know you're hurt, and I have no idea why he would do it. Honestly? I think your ex, Cameron, had something to do with it.<br>
+                Either way, I'm here for you. Also, I really think you should break up with James. I always had a weird feeling about him. Your choice though!"</p>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const name = localStorage.getItem("name");
+
+                if (name) {
+                    document.getElementById("ava").textContent =
+                        `"Really ${name}? I thought we were best friends. I can't believe you think I would do something like that!"`;
+                }
+            });
+        </script>
+    </body>
+</html>

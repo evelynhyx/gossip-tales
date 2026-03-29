@@ -13,10 +13,11 @@
     <body>
         <div class="container">
             <h1>Gossip Room 💋</h1>
-            <p>You're finally in high school, but it isn't what you expected—It's <strong>a nightmare!</strong><br>Before we continue, what should we call you?</p>
+            <p>You're finally in high school, but it isn't what you expected—It's <strong>a nightmare!</strong><br>
+                Before we continue, what should we call you?</p>
             <form name="startForm" action="situation.html" onsubmit="return validateForm()">
                 <input type="text" id="name" class="input" placeholder="Name">
-                <br><span id="nameError" style="color: red; display: none; padding-top: 5px;">Name must be filled out</span><br>
+                <br><span id="nameError" style="color: red; display: none; padding-top: 5px;">Please enter your name!</span><br>
                 <button class="button" type="submit">Start!</button>
             </form>
         </div>
@@ -31,6 +32,7 @@
                     return false;
                 } else {
                     errorSpan.style.display = "none";
+                    localStorage.setItem("name", x.trim());
                     return true;
                 }
             }

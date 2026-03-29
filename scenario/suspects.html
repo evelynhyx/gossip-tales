@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Suspects</title>
+        <link rel="stylesheet" href="../styles/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>3 Suspects...</h1>
+            <p>These are the people you suspect of spreading the rumor, but who really did it?<br>
+                Click on each person to learn more about them.</p>
+            <div class="suspects">
+                <div class="suspect-card" data-id="0">
+                    <span class="suspect-name">Ava</span>
+                    <span class="suspect-role">Best Friend</span>
+                </div>
+
+                <div class="suspect-card" data-id="1">
+                    <span class="suspect-name">Cameron</span>
+                    <span class="suspect-role">Ex Boyfriend</span>
+                </div>
+
+                <div class="suspect-card" data-id="2">
+                    <span class="suspect-name">James</span>
+                    <span class="suspect-role">Boyfriend</span>
+                </div>
+            </div>
+
+            <div class="who-did-it">
+                <p>Who do you think is behind the rumor?</p>
+                <div class="button-row">
+                    <button class="button" onclick="location.href='../endings/ava-ending.html'">Ava</button>
+                    <button class="button" onclick="location.href='../endings/cameron-ending.html'">Cameron</button>
+                    <button class="button" onclick="location.href='../endings/james-ending.html'">James</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlay">
+            <div id="modal">
+                <button id="close-btn">&times;</button>
+                <h2 id="modal-name"></h2>
+                <p id="modal-role"></p>
+                <p id="modal-bio"></p>
+            </div>
+        </div>
+
+        <script>
+            const suspects = [
+                {
+                    name: "Ava",
+                    role: "Best Friend",
+                    bio: "Placeholder info about Ava. Replace this with her background, personality, and why she might be suspicious."
+                },
+                {
+                    name: "Cameron",
+                    role: "Ex Boyfriend",
+                    bio: "Placeholder info about Cameron. Replace this with his background, personality, and why he might be suspicious."
+                },
+                {
+                    name: "James",
+                    role: "Boyfriend",
+                    bio: "Placeholder info about James. Replace this with his background, personality, and why he might be suspicious."
+                }
+            ];
+
+            const overlay = document.getElementById('overlay');
+
+            function openModal(id) {
+                const s = suspects[id];
+                document.getElementById('modal-name').textContent = s.name;
+                document.getElementById('modal-role').textContent = s.role;
+                document.getElementById('modal-bio').textContent = s.bio;
+                overlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                overlay.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('.suspect-card').forEach(card => {
+                card.addEventListener('click', () => openModal(parseInt(card.dataset.id)));
+            });
+
+            document.getElementById('close-btn').addEventListener('click', closeModal);
+
+            overlay.addEventListener('click', e => {
+                if (e.target === overlay) closeModal();
+            });
+
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closeModal();
+            });
+        </script>
+    </body>
+</html>
